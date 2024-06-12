@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestMain(t *testing.T) {
+func TestLinkedList(t *testing.T) {
 
 	t.Run("get a empty array from getContent", func(t *testing.T) {
 
