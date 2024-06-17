@@ -61,7 +61,32 @@ func (list *CircularLinkedList) insertAfter(data int8, node int8) {
 
 }
 
+func (list *CircularLinkedList) removeFirst() {
+	list.head = list.head.next
+	list.last.next = list.head
+}
+
+func (list *CircularLinkedList) removeLast() {
+	current := list.head
+
+	for current.next != list.last {
+		current = current.next
+	}
+	list.last = current
+	current.next = list.head
+
+}
+
 func (list *CircularLinkedList) remove(data int8) {
+
+	if list.head != nil {
+
+		current := list.head
+		for current.next.value != data {
+			current = current.next
+		}
+		current.next = current.next.next
+	}
 
 }
 
