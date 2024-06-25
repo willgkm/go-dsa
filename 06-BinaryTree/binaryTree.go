@@ -101,4 +101,8 @@ func (tree *BinaryTree) InOrderTraversal() []int8 {
 
 }
 
+// TODO: make a Preorder Traversal method
+// TODO: make a Postorder Traversal method
+// TODO: make a Level Order Traversal method
+
 func main() {}
