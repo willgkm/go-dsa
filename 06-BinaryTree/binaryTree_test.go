@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func setupTree() *BinaryTree {
+func setupTree() BinaryTree {
 
 	tree := BinaryTree{}
 	tree.insert(4)
@@ -15,7 +15,7 @@ func setupTree() *BinaryTree {
 	tree.insert(3)
 	tree.insert(5)
 	tree.insert(7)
-	return &tree
+	return tree
 
 }
 
@@ -34,7 +34,6 @@ func TestBinaryTree(t *testing.T) {
 	t.Run("should insert values in a balance way in a binary tree", func(t *testing.T) {
 
 		tree := setupTree()
-
 		got := tree
 		want := BinaryTree{root: &Node{data: 4,
 			leftChild:  &Node{data: 2, leftChild: &Node{data: 1}, rightChild: &Node{data: 3}},
@@ -61,6 +60,16 @@ func TestBinaryTree(t *testing.T) {
 		got := tree.height()
 		want := int8(5)
 		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("should get the inOrderTraversal() of the binary tree", func(t *testing.T) {
+
+		tree := setupTree()
+
+		got := tree.InOrderTraversal()
+		want := []int8{1, 2, 3, 4, 5, 6, 7}
+		assertCorrectMessage(t, got, want)
+
 	})
 
 }
