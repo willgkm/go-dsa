@@ -156,5 +156,32 @@ func (tree *BinaryTree) postorderTraversal() []int8 {
 }
 
 // TODO: make a Level Order Traversal method
+func (tree *BinaryTree) leverOrderTraversal() []int8 {
+	var output = []int8{}
+	var queue = []*Node{}
+
+	queue = append(queue, tree.root)
+
+	for len(queue) > 0 {
+
+		current := queue[0]
+
+		output = append(output, current.data)
+
+		if current.leftChild != nil {
+			queue = append(queue, current.leftChild)
+		}
+
+		if current.rightChild != nil {
+			queue = append(queue, current.rightChild)
+		}
+
+		queue = queue[1:]
+
+	}
+
+	return output
+
+}
 
 func main() {}

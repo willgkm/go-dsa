@@ -90,6 +90,15 @@ func TestBinaryTree(t *testing.T) {
 		assertCorrectMessage(t, got, want)
 	})
 
+	t.Run("should get the leverOrderTraversal() of the binary tree", func(t *testing.T) {
+
+		tree := setupTree()
+
+		got := tree.leverOrderTraversal()
+		want := []int8{4, 2, 6, 1, 3, 5, 7}
+		assertCorrectMessage(t, got, want)
+	})
+
 }
 
 func assertCorrectMessage(t testing.TB, got any, want any) {
