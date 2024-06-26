@@ -70,8 +70,7 @@ func (tree *BinaryTree) height() int8 {
 
 }
 
-// TODO: make a InOrderTraversal method
-func (tree *BinaryTree) InOrderTraversal() []int8 {
+func (tree *BinaryTree) inorderTraversal() []int8 {
 	var output = []int8{}
 	var stack = []*Node{}
 	current := tree.root
@@ -101,7 +100,30 @@ func (tree *BinaryTree) InOrderTraversal() []int8 {
 
 }
 
-// TODO: make a Preorder Traversal method
+func (tree *BinaryTree) preorderTraversal() []int8 {
+	var output = []int8{}
+	var stack = []*Node{}
+	current := tree.root
+
+	for current != nil || len(stack) > 0 {
+
+		for current != nil {
+			stack = append(stack, current)
+			output = append(output, current.data)
+
+			current = current.leftChild
+		}
+
+		current = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+
+		current = current.rightChild
+	}
+
+	return output
+
+}
+
 // TODO: make a Postorder Traversal method
 // TODO: make a Level Order Traversal method
 
