@@ -79,10 +79,17 @@ func TestBinaryTree(t *testing.T) {
 		got := tree.preorderTraversal()
 		want := []int8{4, 2, 1, 3, 6, 5, 7}
 		assertCorrectMessage(t, got, want)
-
 	})
 
-	!
+	t.Run("should get the postorderTraversal() of the binary tree", func(t *testing.T) {
+
+		tree := setupTree()
+
+		got := tree.postorderTraversal()
+		want := []int8{1, 3, 2, 5, 7, 6, 4}
+		assertCorrectMessage(t, got, want)
+	})
+
 }
 
 func assertCorrectMessage(t testing.TB, got any, want any) {

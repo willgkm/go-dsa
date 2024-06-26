@@ -124,7 +124,37 @@ func (tree *BinaryTree) preorderTraversal() []int8 {
 
 }
 
-// TODO: make a Postorder Traversal method
+func (tree *BinaryTree) postorderTraversal() []int8 {
+	var output []int8
+	var stack []*Node
+
+	var lastVisited *Node
+
+	current := tree.root
+
+	for current != nil || len(stack) > 0 {
+
+		for current != nil {
+			stack = append(stack, current)
+			current = current.leftChild
+		}
+
+		current = stack[len(stack)-1]
+
+		if current.rightChild == nil || current.rightChild == lastVisited {
+
+			stack = stack[:len(stack)-1]
+			output = append(output, current.data)
+			lastVisited = current
+			current = nil
+		} else {
+			current = current.rightChild
+		}
+	}
+
+	return output
+}
+
 // TODO: make a Level Order Traversal method
 
 func main() {}
