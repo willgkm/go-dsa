@@ -46,28 +46,45 @@ func (tree *BinaryTree) insert(data int8) {
 
 //TODO: make insert() on a recursive way
 
-func (tree *BinaryTree) height() int8 {
+// func heightNonRecursive(root *Node) int {
+// 	if root == nil {
+// 		return 0
+// 	}
 
-	var leftHeight, rightHeight int8
+// 	queue := []*Node{root}
+// 	height := 0
 
-	current := tree.root
-	for current.leftChild != nil {
-		leftHeight++
-		current = current.leftChild
-	}
+// 	for len(queue) > 0 {
+// 		size := len(queue)
+// 		for i := 0; i < size; i++ {
+// 			node := queue[0]
+// 			queue = queue[1:]
 
-	current = tree.root
-	for current.rightChild != nil {
-		rightHeight++
-		current = current.rightChild
-	}
+// 			if node.leftChild != nil {
+// 				queue = append(queue, node.leftChild)
+// 			}
+// 			if node.rightChild != nil {
+// 				queue = append(queue, node.rightChild)
+// 			}
+// 		}
+// 		height++
+// 	}
+// 	return height
+// }
 
-	if leftHeight > rightHeight {
-		return leftHeight
+func height(node *Node) int8 {
+	if node == nil {
+		return 0
 	} else {
-		return rightHeight
-	}
 
+		var lSide, rDepth = height(node.leftChild), height(node.rightChild)
+
+		if lSide > rDepth {
+			return (lSide + 1)
+		} else {
+			return (rDepth + 1)
+		}
+	}
 }
 
 func (tree *BinaryTree) inorderTraversal() []int8 {

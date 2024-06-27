@@ -45,8 +45,8 @@ func TestBinaryTree(t *testing.T) {
 
 		tree := setupTree()
 
-		got := tree.height()
-		want := int8(2)
+		got := height(tree.root)
+		want := int8(3)
 		assertCorrectMessage(t, got, want)
 	})
 
@@ -54,11 +54,43 @@ func TestBinaryTree(t *testing.T) {
 
 		tree := setupTree()
 		tree.insert(8)
-		tree.insert(9)
+		tree.insert(6)
 		tree.insert(10)
+		tree.insert(7)
+		tree.insert(1)
+		tree.insert(5)
+		tree.insert(4)
+		tree.insert(3)
+		tree.insert(2)
+		tree.insert(9)
+		tree.insert(11)
+		tree.insert(12)
 
-		got := tree.height()
-		want := int8(5)
+		got := height(tree.root)
+		want := int8(7)
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("should get the height of a 'inbalanceASAS' tree", func(t *testing.T) {
+
+		tree := BinaryTree{}
+		tree.insert(9)
+		tree.insert(7)
+		tree.insert(11)
+		tree.insert(1)
+		tree.insert(8)
+		tree.insert(10)
+		tree.insert(12)
+		tree.insert(13)
+		tree.insert(2)
+		tree.insert(3)
+		tree.insert(4)
+		tree.insert(5)
+		tree.insert(6)
+		tree.insert(7)
+
+		got := height(tree.root)
+		want := int8(8)
 		assertCorrectMessage(t, got, want)
 	})
 
